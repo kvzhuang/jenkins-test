@@ -3,7 +3,7 @@
         simple example for jenkins
     </description>
   <!-- set global properties for this build -->
-  <property name="src" location="src"/>
+  <property name="src" location="."/>
   <property name="build" location="build"/>
   <property name="dist"  location="dist"/>
 
@@ -15,11 +15,13 @@
   </target>
 
 
-  <target name="dist" depends="compile"
+  <target name="dist"
         description="generate the distribution" >
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}"/>
-
+    <copy todir="${dist}">
+        <fileset dir="${src}"/>
+    </copy>
   </target>
 
   <target name="clean"
